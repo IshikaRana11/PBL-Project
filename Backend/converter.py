@@ -23,25 +23,25 @@ def tokenizer(input_expression):
             tokens.append({'type': 'right_paren', 'value': ')'})
             current += 1
             continue
+        if char in ['+', '-', '*', '/', '%']:  # Added support for mathematical operators
+            tokens.append({'type': 'name', 'value': char})
+            current += 1
+            continue
         if re.match(numbers, char):
             value = ''
-            while re.match(numbers, char):
-                value += char
+            while current < len(input_expression) and (re.match(numbers, input_expression[current]) or input_expression[current] == '.'):
+                value += input_expression[current]
                 current += 1
-                if current < len(input_expression):
-                    char = input_expression[current]
-                else:
+                if current >= len(input_expression):
                     break
             tokens.append({'type': 'number', 'value': value})
             continue
         if re.match(alphabet, char):
             value = ''
-            while re.match(alphabet, char):
-                value += char
+            while current < len(input_expression) and re.match(alphabet, input_expression[current]):
+                value += input_expression[current]
                 current += 1
-                if current < len(input_expression):
-                    char = input_expression[current]
-                else:
+                if current >= len(input_expression):
                     break
             tokens.append({'type': 'name', 'value': value})
             continue
@@ -170,5 +170,5 @@ def main():
     except Exception as e:
         print(json.dumps({"error": str(e)}))
 
-if __name__ == "__main__":  # This line is now correctly indented
+if __name__ == "__main__":
     main()
