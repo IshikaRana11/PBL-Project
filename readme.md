@@ -36,8 +36,6 @@ npm run dev
 
 - **Backend**: Node.js, Express.js
 - **Frontend**: React.js
-- **Database**: (Mention here, e.g., MongoDB, MySQL)
-- **Other Tools**: (Optional: list if using Postman, Docker, etc.)
 
 ## 📌 Important Notes
 
@@ -47,8 +45,19 @@ npm run dev
 
 ## 🤝 Contributing
 
+### 🐍 Python Parser & Visualizer
+
+To convert Lisp code and **visualize the parse tree**, run the following command in the root directory (or where `converter.py` is located):
+
+python converter.py "(add 2 (subtract 4 8))" --visualize
+
 Feel free to fork the repository, create a branch, and submit a pull request!
 
 ---
 
 > Made with ❤️ for the PBL Project.
+> python converter.py "(add 2 (subtract 4 8))" --visualize
+
+```
+
+```
